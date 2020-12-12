@@ -1,19 +1,23 @@
 // import logo from './logo.svg';
 import './App.css';
-import React, { useState, useEffect } from "react";
-// import restaurant from "./restaurant.jpg";
-// https://api.github.com/users/kevindsteeleii
+import React from "react";
+import { Routes, Route } from 'react-router-dom';
+import { Home, About, Events, Contact, Whoops404, Services, CompanyHistory, Location } from "./pages";
+ 
 function App() {
-  const [data, setData] = useState(null);
-  const apiURL = "https://api.github.com/users/kevindsteeleii";
-
-  useEffect(() => {
-    fetch()
-  }, []);
-
   return (
     <div>
-
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/about" element={<About/>}>
+          <Route path="services" element={<Services/>}/>
+          <Route path="history" element={<CompanyHistory/>}/>
+          <Route path="location" element={<Location/>}/>
+        </Route>
+        <Route path="/events" element={<Events/>}/>
+        <Route path="/contact" element={<Contact/>}/>
+        <Route path="*" element={<Whoops404/>}/>
+      </Routes>
     </div>
   );
 }
